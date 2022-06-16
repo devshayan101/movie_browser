@@ -1,0 +1,12 @@
+.head{
+    color:rgb(0, 183, 255);
+    text-transform: uppercase;
+    font-weight: 400;
+}
+.formClass{
+    display: flex;
+    flex-direction: row;
+}
+.formSubClass{
+    display: inline-flex;
+}
