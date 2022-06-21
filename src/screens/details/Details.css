@@ -1,0 +1,15 @@
+.details-container{
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+.details-left{
+    width: 20%;
+}
+.details-middle{
+    width: 60%;
+}
+.details-right{
+    width: 20%;
+    margin-top: 1rem;
+}

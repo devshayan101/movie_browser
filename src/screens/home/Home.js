@@ -5,14 +5,16 @@ import HorizontalScrollTiles from "./upComingMoviesList"
 import ReleasedMovies from "./ReleasedMoviesList";
 import MoviesFilterCard from "./MoviesFilterCard";
 import Details from "../details/Details";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+
 export default function Home() {
     return (
       <div>
-        <Switch>
-          <Route exact path="/">
+        {/* <Routes>
+          <Route exact path="/"> */}
         <div>
-            <Header BookShow={false}/>
+            <Header BookShowState={false}/>
             <div className="upComingMovies">
                 Upcoming Movies
             </div>
@@ -26,18 +28,18 @@ export default function Home() {
               </div>
           </div>
         </div>
-          </Route>
+          {/* </Route> */}
 
 
-        <Route path="/details/:id">
+        {/* <Route path="/details/:id">
         <div>
 
           <Header BookShow={true}/>
           <Details />
 
         </div>
-        </Route>
-        </Switch>
+        </Route> */}
+        {/* </Routes> */}
       </div>
     )
   }

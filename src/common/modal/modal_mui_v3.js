@@ -95,8 +95,6 @@ class SimpleModal extends React.Component {
   logStateHandler = () => {
     if(window.sessionStorage.getItem('access-token')===null){
       this.setState({logState:"Login"})
-
-      console.log("set log state to login", this.state.logState)
     }
     else{
       this.setState({logState:"Logout"})
@@ -105,6 +103,9 @@ class SimpleModal extends React.Component {
 
     }
   }
+
+  
+  //this is the method that is called when the component is mounted
   componentDidMount(){
     this.logStateHandler();
   }

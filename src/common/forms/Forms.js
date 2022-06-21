@@ -99,6 +99,10 @@ const [successMessage, setSuccessMessage] = React.useState('');
   else {
       const error = new Error ( ) ;
       error.message = result.message || ' Something went wrong . ' ;
+
+      alert(result.message);
+
+
       }
     } catch ( e ) {
     alert ( `Error : ${e.message} ` ) 
