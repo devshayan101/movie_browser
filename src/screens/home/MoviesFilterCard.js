@@ -12,6 +12,9 @@ import { Button } from '@material-ui/core';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { useState, useEffect } from 'react';
+import Card from '@material-ui/core/Card';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import "./MoviesFilterCard.css";
 
 const defaultValues = {
@@ -22,11 +25,21 @@ const defaultValues = {
   endDate: new Date(),
 };
 
+const styles = {
+  card: {
+    maxWidth: 345,
+    margin: "10px",
+    padding: "16px",
+  },
+  media: {
+    // ⚠️ object-fit is not supported by IE 11.
+    objectFit: 'cover',
+  },
+};
 
 
-
-export default function MoviesFilterCard() {
-
+ function MoviesFilterCard(props) {
+  const { classes } = props;
  ////Genres 
   const [cardListGenres, setCardListGenres] = useState([]);
   const [CardDataGenresisLoaded, setCardDataGenresisLoaded] = useState(false);
@@ -73,6 +86,7 @@ const handleSubmit = (event) => {
   };
   return (
     <div>
+      <Card className={classes.card}>
         <div className="head">
             <h5>Find Movies By:</h5>
         </div>
@@ -191,6 +205,11 @@ const handleSubmit = (event) => {
             </Grid>        
             </Grid>
         </form>
+        </Card>
     </div>
   );
 }
+MoviesFilterCard.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+export default withStyles(styles)(MoviesFilterCard);
