@@ -23,7 +23,7 @@ return (
           { (BookShowState===true) && (MovieId !== undefined ) ? 
             <li>
               {(window.sessionStorage.getItem('access-token')===null) ?
-            <Button variant="contained" onClick={()=><SimpleModalWrapped /> }  color="primary">Book Show</Button> :
+            <Button variant="contained" onClick={()=>alert("Login to Book Show") }  color="primary">Book Show</Button> :
             
             <Link to={`/bookshow/${MovieId}`}><Button variant="contained" color="primary">Book Show</Button> </Link>} 
 

@@ -11,6 +11,7 @@ import Stack from '@mui/material/Stack';
 import { Button } from '@material-ui/core';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { useState, useEffect } from 'react';
 import "./MoviesFilterCard.css";
 
 const defaultValues = {
@@ -25,6 +26,36 @@ const defaultValues = {
 
 
 export default function MoviesFilterCard() {
+
+ ////Genres 
+  const [cardListGenres, setCardListGenres] = useState([]);
+  const [CardDataGenresisLoaded, setCardDataGenresisLoaded] = useState(false);
+
+  useEffect(() => {
+    fetch("http://localhost:8085/api/v1/genres")
+        .then((res) => {return res.json()})
+        .then((json) => {
+                setCardListGenres(json.genres);
+                setCardDataGenresisLoaded(true);
+        })
+      },[]);
+      
+      const cardDataListGenres = cardListGenres;
+
+////Artists
+      const [cardListArtists, setCardListArtists] = useState([]);
+      const [CardDataArtistsisLoaded, setCardDataArtistsisLoaded] = useState(false);
+    
+      useEffect(() => {
+        fetch("http://localhost:8085/api/v1/artists")
+            .then((res) => {return res.json()})
+            .then((json) => {
+                    setCardListArtists(json.artists);
+                    setCardDataArtistsisLoaded(true);
+            })
+          },[]);
+          
+          const cardDataListArtists = cardListArtists;    
 
 const [formValues, setFormValues] = React.useState(defaultValues);
 
@@ -73,11 +104,11 @@ const handleSubmit = (event) => {
                 label="Genres"
                 >
                 
-                {itemData.map((item) => {
+                {CardDataGenresisLoaded && cardDataListGenres.map((item) => {
                     return <FormControlLabel key={item.id} 
                     value={formValues.genres} 
                     control={<Checkbox />}
-                    label={item.genres}
+                    label={item.genre}
                     name="genres"
                     onChange={handleInputChange}
                       /> 
@@ -101,12 +132,12 @@ const handleSubmit = (event) => {
                 onChange={handleInputChange}
                 label="Artists"
                 >
-                 {itemData.map((item) => {
+                 {CardDataArtistsisLoaded && cardDataListArtists.map((item) => {
                     return <FormControlLabel key={item.id} 
-                    value={formValues.author} 
+                    value={formValues.first_name+" "+formValues.last_name} 
                     control={<Checkbox />}
-                    label={item.author}
-                    name={item.author}
+                    label={item.first_name+" "+item.last_name}
+                    name={item.first_name+" "+item.last_name}
                     onChange={handleInputChange}
                       />
                 })}
